@@ -1,0 +1,24 @@
+This file lays out the details of the .ANI file format.
+
+#Header
+
+0x0	-	0x400
+A 1024-byte, 256-color palette. Some portions of this palette are
+modified in-line by the game engine. I haven't mapped which, and
+it's probably variable per-game so I won't. Each color takes up
+4 bytes, which directly maps to a 32-bit RGBA pixel in the output
+
+0x400	-	0x403
+Number of frames in the animation
+
+The rest of the file is in the following format, repeating for
+as many frames as specified (shadow frames do not count)
+
+All are now relative to the beginning offset (starting at 0x404)
+
+#Body
+
+0x0	-	0xB
+w1,h1,a,b,s1,s2
+
+0xC	-	0x
